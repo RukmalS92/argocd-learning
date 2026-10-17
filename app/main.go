@@ -8,7 +8,7 @@ import (
 )
 
 // Version is what we'll bump to watch ArgoCD roll out changes.
-const Version = "1.0.0"
+const Version = "1.1.0"
 
 func main() {
 	hostname, _ := os.Hostname()

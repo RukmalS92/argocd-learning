@@ -17,7 +17,7 @@ spec:
       containers:
         - name: go-app
           # Imported into k3d with `k3d image import`, so no registry pull.
-          image: go-app:1.0.0
+          image: go-app:1.1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
