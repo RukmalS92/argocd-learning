@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: go-app
+  namespace: argocd
+  # Finalizer: if this file is removed from git and the root app prunes this
+  # Application, also cascade-delete the workloads it deployed.
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/RukmalS92/argocd-learning
+    targetRevision: main
+    path: manifests/go-app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: go-app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
